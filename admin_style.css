@@ -1,0 +1,1214 @@
+/* ===================================================================
+   SISTEM INFORMASI MANAJEMEN SEMINAR & SIDANG AKHIR MAHASISWA
+   POLITEKNIK NEGERI LHOKSEUMAWE - PRODI TEKNOLOGI REKAYASA PERANGKAT LUNAK
+   FILE: admin_style.css (Desain Beranda & Panel Admin Sesuai Referensi)
+   =================================================================== */
+
+:root {
+    --admin-navy-dark: #0a0f1d;     /* Header sidebar & background terdalam */
+    --admin-navy: #0f172a;          /* Warna utama sidebar navy gelap */
+    --admin-navy-surface: #1e293b;  /* Hover / card aktif sidebar */
+    --admin-navy-border: #334155;   /* Garis pemisah halus */
+    --admin-blue-primary: #1e40af;  /* Biru utama tombol & highlight admin */
+    --admin-blue-hover: #1d4ed8;    /* Biru hover */
+    --admin-blue-light: #eff6ff;    /* Biru lembut */
+    --admin-blue-border: #bfdbfe;   /* Border biru */
+    --admin-accent-orange: #ea580c; /* Oranye aksen website & prodi TRPL */
+    --admin-accent-light: #fff7ed;  /* Oranye lembut */
+    --admin-accent-border: #fed7aa; /* Border oranye */
+    --admin-bg-content: #f8fafc;    /* Background terang area konten utama */
+    --admin-text-main: #0f172a;     /* Teks utama */
+    --admin-text-muted: #64748b;    /* Teks redup */
+    --admin-radius: 12px;           /* Sudut membulat modern */
+    --admin-radius-lg: 16px;
+    --admin-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --admin-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- RESET & LAYOUT GLOBAL DASHBOARD ADMIN --- */
+body.admin-body,
+.admin-app,
+body.dashboard-wrapper {
+    background-color: var(--admin-bg-content);
+    color: var(--admin-text-main);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- SIDEBAR KIRI NAVY GELAP (#0f172a) --- */
+.admin-sidebar {
+    width: 270px;
+    background-color: var(--admin-navy);
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Header Panel Admin di Bagian Atas Sidebar */
+.admin-sidebar-header {
+    padding: 22px 20px;
+    background: linear-gradient(135deg, var(--admin-navy-dark), #131d35);
+    border-bottom: 1px solid var(--admin-navy-border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-sidebar-logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--admin-accent-orange), #f97316);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 10px rgba(234, 88, 12, 0.35);
+    flex-shrink: 0;
+}
+
+.admin-sidebar-brand h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-sidebar-brand span {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    margin-top: 2px;
+}
+
+/* Profil Akun Admin yang Sedang Aktif */
+.admin-sidebar-user {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.admin-user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1e3a8a;
+    border: 2px solid var(--admin-accent-orange);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.admin-user-info {
+    overflow: hidden;
+}
+
+.admin-user-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #f8fafc;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.admin-user-role {
+    font-size: 0.72rem;
+    color: #38bdf8;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Navigasi Menu Sidebar */
+.admin-sidebar-nav {
+    padding: 15px 12px;
+    flex: 1;
+}
+
+.admin-nav-section-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 1px;
+    padding: 10px 14px 6px;
+}
+
+.admin-sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.admin-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.admin-sidebar-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #94a3b8;
+    transition: all 0.2s ease;
+}
+
+.admin-sidebar-link:hover {
+    background-color: var(--admin-navy-surface);
+    color: white;
+}
+
+.admin-sidebar-link:hover i {
+    color: var(--admin-accent-orange);
+    transform: translateX(2px);
+}
+
+/* Pemisah Visual Menu Utama & Menu Tambahan */
+.admin-sidebar-divider {
+    margin: 18px 8px 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    text-align: left;
+}
+
+.admin-sidebar-divider-label {
+    position: absolute;
+    top: -9px;
+    left: 10px;
+    background-color: var(--admin-navy, #0f172a);
+    padding: 0 8px;
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* Menu yang Sedang Aktif (Tanda Visual Jelas) */
+.admin-sidebar-link.active {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.35), rgba(30, 41, 59, 0.7));
+    color: #ffffff;
+    border-left: 4px solid var(--admin-accent-orange, #ea580c);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+}
+
+.admin-sidebar-link.active i {
+    color: var(--admin-accent-orange, #ea580c);
+    transform: scale(1.1);
+}
+
+.admin-sidebar-link.active::after {
+    content: '';
+    margin-left: auto;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--admin-accent-orange, #ea580c);
+    box-shadow: 0 0 8px var(--admin-accent-orange, #ea580c);
+}
+
+/* Menu Logout */
+.admin-sidebar-link.link-logout {
+    color: #fca5a5;
+    margin-top: 6px;
+}
+
+.admin-sidebar-link.link-logout:hover {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #ef4444;
+}
+
+.admin-sidebar-link.link-logout i {
+    color: #f87171;
+}
+
+/* --- KONTEN UTAMA (MAIN CONTENT AREA) --- */
+.admin-main-wrapper,
+.admin-main {
+    flex: 1;
+    margin-left: 270px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--admin-bg-content);
+    transition: all 0.3s ease;
+    width: calc(100% - 270px);
+}
+
+/* Topbar Admin */
+.admin-topbar {
+    background: white;
+    padding: 16px 30px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.admin-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-mobile-toggle,
+.admin-sidebar-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: var(--admin-navy);
+    font-size: 1.15rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.admin-topbar-title h1 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--admin-navy);
+    margin: 0;
+}
+
+.admin-topbar-title span {
+    font-size: 0.8rem;
+    color: var(--admin-text-muted);
+}
+
+.admin-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: #64748b;
+}
+
+.admin-breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.admin-breadcrumb .current {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.admin-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-badge-date,
+.topbar-date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f1f5f9;
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.admin-badge-date i,
+.topbar-date-pill i {
+    color: var(--admin-accent-orange);
+}
+
+.admin-badge-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Container Konten Halaman */
+.admin-content-body {
+    padding: 26px 30px;
+    flex: 1;
+}
+
+/* --- BANNER SAMBUTAN: SELAMAT DATANG, ADMIN! --- */
+.admin-welcome-hero,
+.welcome-admin-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    border-radius: var(--admin-radius-lg);
+    padding: 26px 30px;
+    color: white;
+    margin-bottom: 26px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.admin-welcome-hero::after,
+.welcome-admin-banner::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(234, 88, 12, 0.35) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.admin-welcome-hero h2,
+.welcome-admin-banner h1,
+.welcome-admin-banner h2 {
+    font-size: 1.55rem;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    color: white;
+}
+
+.admin-welcome-hero p,
+.welcome-admin-banner p {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    margin: 0;
+    max-width: 780px;
+    line-height: 1.5;
+}
+
+.welcome-admin-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* --- KARTU STATISTIK MODERN (6 KARTU STATISTIK DARI MYSQL) --- */
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.admin-stat-card,
+.stat-card {
+    background: white;
+    border-radius: var(--admin-radius);
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: var(--admin-shadow);
+    border: 1px solid #e2e8f0;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+.admin-stat-card:hover,
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--admin-shadow-hover);
+    border-color: #cbd5e1;
+}
+
+.admin-stat-icon,
+.stat-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.admin-stat-card:hover .admin-stat-icon,
+.stat-card:hover .stat-card-icon {
+    transform: scale(1.08);
+}
+
+.admin-stat-details {
+    flex: 1;
+}
+
+.admin-stat-value,
+.stat-card-value {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--admin-navy);
+    line-height: 1.2;
+}
+
+.admin-stat-label,
+.stat-card-title {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    margin-top: 4px;
+}
+
+.stat-card-desc {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* Varian Warna Ikon Kartu Statistik */
+.stat-icon-blue,   .icon-blue   { background: #eff6ff; color: #2563eb; }
+.stat-icon-orange, .icon-orange { background: #fff7ed; color: #ea580c; }
+.stat-icon-green,  .icon-green  { background: #f0fdf4; color: #16a34a; }
+.stat-icon-purple, .icon-purple { background: #f5f3ff; color: #7c3aed; }
+.stat-icon-amber   { background: #fffbeb; color: #d97706; }
+.stat-icon-red,    .icon-red    { background: #fef2f2; color: #dc2626; }
+
+/* --- PANEL & TABEL ADMIN MODERN --- */
+.admin-card-panel,
+.admin-table-card {
+    background: white;
+    border-radius: var(--admin-radius);
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--admin-shadow);
+    padding: 24px;
+    margin-bottom: 25px;
+}
+
+.admin-panel-header,
+.admin-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.admin-panel-header h3,
+.admin-table-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--admin-navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Toolbar Filter & Pencarian */
+.admin-toolbar-filter,
+.filter-search-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.admin-search-input,
+.search-box {
+    position: relative;
+    min-width: 220px;
+    flex: 1;
+}
+
+.admin-search-input input,
+.search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 12px 9px 36px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    outline: none;
+    transition: all 0.2s;
+    background: white;
+}
+
+.admin-search-input input:focus,
+.search-box input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.admin-search-input i,
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.admin-filter-select,
+.status-select {
+    padding: 9px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    background: white;
+    outline: none;
+    color: #334155;
+    cursor: pointer;
+}
+
+.admin-filter-select:focus,
+.status-select:focus {
+    border-color: #2563eb;
+}
+
+/* Tabel Admin */
+.admin-table-responsive,
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.admin-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    text-align: left;
+}
+
+.admin-data-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    padding: 13px 16px;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.admin-data-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.admin-data-table tr:hover {
+    background-color: #fbfcfe;
+}
+
+/* --- BADGES STATUS & ROLE --- */
+.badge-admin-blue,
+.badge-terjadwal {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-admin-green,
+.badge-selesai {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-admin-amber,
+.badge-menunggu {
+    background: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fde68a;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-admin-orange {
+    background: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #fed7aa;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-admin-red,
+.badge-ditolak {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-role-admin {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* --- TOMBOL AKSI & TOMBOL FORMULIR --- */
+.btn-admin,
+.btn-admin-primary {
+    background-color: var(--admin-blue-primary);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-admin:hover,
+.btn-admin-primary:hover {
+    background-color: var(--admin-blue-hover);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+}
+
+.btn-admin-secondary {
+    background-color: white;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-admin-secondary:hover {
+    background-color: #f1f5f9;
+    color: var(--admin-navy);
+}
+
+.btn-admin-orange {
+    background-color: var(--admin-accent-orange);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-admin-orange:hover {
+    background-color: #c2410c;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+}
+
+.btn-admin-outline {
+    background: white;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-admin-outline:hover {
+    background-color: #f1f5f9;
+    color: var(--admin-navy);
+    border-color: #94a3b8;
+}
+
+/* Tombol Aksi di Kolom Tabel (Edit, Detail, Hapus) */
+.btn-action {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btn-action-edit {
+    background: #eff6ff;
+    color: #2563eb;
+    border-color: #bfdbfe;
+}
+.btn-action-edit:hover {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-action-detail {
+    background: #f0fdf4;
+    color: #16a34a;
+    border-color: #bbf7d0;
+}
+.btn-action-detail:hover {
+    background: #16a34a;
+    color: white;
+}
+
+.btn-action-delete {
+    background: #fef2f2;
+    color: #dc2626;
+    border-color: #fecaca;
+}
+.btn-action-delete:hover {
+    background: #dc2626;
+    color: white;
+}
+
+/* --- MODAL POPUP ADMIN --- */
+.admin-modal,
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.admin-modal.active,
+.admin-modal.show,
+.custom-modal.show {
+    display: flex;
+}
+
+.admin-modal-card,
+.modal-content {
+    background: white;
+    border-radius: var(--admin-radius);
+    max-width: 580px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: modalFadeIn 0.25s ease-out;
+    border: 1px solid #cbd5e1;
+    margin: auto;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.admin-modal-header {
+    padding: 18px 24px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-modal-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--admin-navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-admin-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.btn-admin-close:hover {
+    color: #dc2626;
+}
+
+.admin-modal-body {
+    padding: 24px;
+    max-height: calc(85vh - 140px);
+    overflow-y: auto;
+}
+
+.admin-modal-footer {
+    padding: 16px 24px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Kontrol Formulir Modal */
+.form-admin-group {
+    margin-bottom: 16px;
+}
+
+.form-admin-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.form-admin-control {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s;
+    background: white;
+    color: #0f172a;
+}
+
+.form-admin-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-admin-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* Notifikasi Alert */
+.admin-alert {
+    padding: 14px 18px;
+    border-radius: var(--admin-radius);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    box-shadow: var(--admin-shadow);
+}
+
+.admin-alert-success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.admin-alert-danger {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+/* Footer Admin */
+.admin-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.82rem;
+    color: #64748b;
+    border-top: 1px solid #e2e8f0;
+    background: white;
+    margin-top: auto;
+}
+
+/* --- RESPONSIVE UNTUK LAYAR TABLET & HP --- */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.show,
+    .admin-sidebar.active {
+        transform: translateX(0);
+    }
+
+    .admin-main-wrapper,
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .admin-mobile-toggle,
+    .admin-sidebar-toggle {
+        display: inline-flex;
+    }
+
+    .form-admin-row {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-content-body {
+        padding: 18px;
+    }
+
+    .admin-topbar {
+        padding: 14px 18px;
+    }
+}
+
+
+/* Penyesuaian Komponen Lonceng Notifikasi di Panel Admin */
+.admin-topbar-right .btn-notifikasi-lonceng {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.admin-topbar-right .btn-notifikasi-lonceng:hover {
+    background: #fff7ed;
+    border-color: var(--admin-accent-orange, #ea580c);
+    color: var(--admin-accent-orange, #ea580c);
+}
+
+/* --- SUBMENU ACCORDION SIDEBAR ADMIN (8 MENU BERTIKAT) --- */
+.admin-sidebar-dropdown {
+    position: relative;
+}
+
+.admin-sidebar-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.admin-sidebar-dropdown-toggle:hover {
+    background-color: var(--admin-navy-surface, #1e293b);
+    color: white;
+}
+
+.admin-sidebar-dropdown-toggle:hover i.menu-icon {
+    color: var(--admin-accent-orange, #ea580c);
+    transform: translateX(2px);
+}
+
+.admin-sidebar-dropdown-toggle i.menu-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #94a3b8;
+    transition: all 0.2s ease;
+}
+
+.admin-sidebar-dropdown-toggle .chevron-icon {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #64748b;
+    transition: transform 0.25s ease;
+}
+
+/* Indikator Menu Induk Aktif */
+.admin-sidebar-dropdown.open .admin-sidebar-dropdown-toggle,
+.admin-sidebar-dropdown.active .admin-sidebar-dropdown-toggle {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.admin-sidebar-dropdown.active .admin-sidebar-dropdown-toggle {
+    border-left: 4px solid var(--admin-accent-orange, #ea580c);
+    background: rgba(234, 88, 12, 0.08);
+}
+
+.admin-sidebar-dropdown.active .admin-sidebar-dropdown-toggle i.menu-icon {
+    color: var(--admin-accent-orange, #ea580c);
+}
+
+.admin-sidebar-dropdown.open .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--admin-accent-orange, #ea580c);
+}
+
+/* Submenu container accordion */
+.admin-sidebar-submenu {
+    list-style: none;
+    padding: 4px 0 6px 14px;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+    transition: all 0.25s ease-in-out;
+}
+
+.admin-sidebar-dropdown.open .admin-sidebar-submenu {
+    display: flex;
+}
+
+/* Tautan Submenu */
+.admin-submenu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    color: #94a3b8;
+    font-size: 0.83rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.admin-submenu-link i {
+    font-size: 0.8rem;
+    width: 16px;
+    text-align: center;
+    color: #64748b;
+    transition: all 0.2s ease;
+}
+
+.admin-submenu-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.admin-submenu-link:hover i {
+    color: var(--admin-accent-orange, #ea580c);
+}
+
+/* Item Submenu Aktif */
+.admin-submenu-link.active-submenu {
+    background: linear-gradient(90deg, rgba(234, 88, 12, 0.15), rgba(30, 41, 59, 0.5));
+    color: #ffffff;
+    font-weight: 700;
+    border-left: 3px solid var(--admin-accent-orange, #ea580c);
+}
+
+.admin-submenu-link.active-submenu i {
+    color: var(--admin-accent-orange, #ea580c);
+}
